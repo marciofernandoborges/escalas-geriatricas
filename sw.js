@@ -1,5 +1,5 @@
-const CACHE = 'escalas-geriatricas-v4';
-const ASSETS = ['./','./index.html','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png','./icon-512-maskable.png'];
+const CACHE = 'escalas-geriatricas-v5';
+const ASSETS = ['./','./index.html','./aga.html','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png','./icon-512-maskable.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
