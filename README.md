@@ -1,6 +1,6 @@
 # Escalas Geriátricas — pasta pronta para o GitHub Pages
 
-App de 100 escalas de avaliação geriátrica, com cálculo automático, interpretação, conduta sugerida
+App de 138 escalas de avaliação geriátrica e 3 ferramentas de farmacoterapia, com cálculo automático, interpretação, conduta sugerida
 e texto pronto para o prontuário. Construído a partir do acervo **Geriatria Total** (328 obras).
 
 Publicando esta pasta, o app ganha um endereço `https://` — e é isso que destrava o **ícone na tela
@@ -12,10 +12,13 @@ de início do iPhone**, o modo tela cheia e o funcionamento offline.
 
 | Arquivo | Para que serve |
 |---|---|
-| `index.html` | o app inteiro, em um arquivo só |
-| `manifest.webmanifest` | diz ao iPhone/Android o nome, as cores e os ícones do app |
+| `index.html` | app de escalas — 138 escalas e 3 ferramentas |
+| `aga.html` | app da Avaliação Geriátrica Ampla completa, com laudo e relatório impressos |
+| `manifest.webmanifest` | diz ao iPhone/Android o nome, as cores e os ícones do app de escalas |
+| `aga.webmanifest` | o mesmo, para o app da AGA — nome e ícone próprios |
 | `sw.js` | service worker — guarda o app no aparelho para funcionar **sem internet** |
-| `icon-180.png` · `icon-192.png` · `icon-512.png` · `icon-512-maskable.png` | ícones |
+| `icon-180.png` · `icon-192.png` · `icon-512.png` · `icon-512-maskable.png` | ícones do app de escalas (**EG**, azul) |
+| `icon-aga-180.png` · `icon-aga-192.png` · `icon-aga-512.png` · `icon-aga-512-maskable.png` | ícones do app da AGA (**AGA**, verde) |
 | `.nojekyll` | impede o GitHub de reprocessar os arquivos |
 
 Não mexa nos nomes dos arquivos — o `index.html` e o `sw.js` procuram uns aos outros por nome.
@@ -32,7 +35,7 @@ Não mexa nos nomes dos arquivos — o `index.html` e o `sw.js` procuram uns aos
    - Não marque nenhuma outra opção. Clique em **Create repository**.
 4. Na tela seguinte, clique em **uploading an existing file**.
 5. Arraste **os arquivos de dentro desta pasta** (não a pasta em si) para a área de upload.
-   São 8 arquivos. O `.nojekyll` é invisível no Finder — pressione `Command + Shift + .` para
+   São 15 arquivos. O `.nojekyll` é invisível no Finder — pressione `Command + Shift + .` para
    mostrar arquivos ocultos antes de arrastar.
 6. Clique em **Commit changes**.
 7. Vá em **Settings** (aba no topo do repositório) → **Pages** (menu da esquerda).
@@ -43,6 +46,10 @@ Não mexa nos nomes dos arquivos — o `index.html` e o `sw.js` procuram uns aos
    ```
    https://SEU-USUARIO.github.io/escalas-geriatricas/
    ```
+
+   A Avaliação Geriátrica Ampla fica em `https://SEU-USUARIO.github.io/escalas-geriatricas/aga.html`
+   — abra esse endereço no Safari e adicione à tela de início. Os dois apps ficam separados na tela,
+   com ícones diferentes: **EG** em azul para as escalas, **AGA** em verde para a avaliação ampla.
 
 ## Publicar — caminho pelo terminal
 
@@ -80,7 +87,7 @@ Substitua o `index.html` no repositório pela versão nova e **incremente a vers
 primeira linha do `sw.js`:
 
 ```js
-const CACHE = 'escalas-geriatricas-v3';   // era v2
+const CACHE = 'escalas-geriatricas-v7';   // era v6
 ```
 
 Sem trocar esse número, os aparelhos que já instalaram continuam abrindo a versão antiga do cache.
@@ -104,10 +111,15 @@ instrumentos antes de publicar — RUDAS e SLUMS, ambos livres, cobrem a mesma f
 
 ## Conteúdo
 
-100 escalas aplicáveis item a item, em 14 domínios: cognição (15), fragilidade (14), mobilidade e
-quedas (10), humor (9), prognóstico (8), delirium (7), nutrição (6), funcionalidade (5), dor (5),
-comportamento (4), sono (3), pele (3), cuidador (2) e outros (9). Mais 60 instrumentos no catálogo
-de referência.
+138 escalas aplicáveis item a item, em 15 domínios: outros (18), cognição (15), fragilidade (15),
+humor (14), mobilidade e quedas (14), prognóstico (12), delirium (10), funcionalidade (8), nutrição (8),
+dor (8), comportamento (5), sono (4), pele (4), cuidador (2) e farmacoterapia (1).
+
+Mais 3 ferramentas de farmacoterapia: calculadora de carga anticolinérgica (ACB) com 93 fármacos,
+critérios de Beers 2023 (58 critérios buscáveis) e STOPP/START (63 critérios por sistema).
+
+O app tem duas abas: **Aplicar**, onde as escalas são preenchidas, e **Sessão**, que acumula os
+resultados do atendimento e monta o texto da evolução.
 
 As condutas são sínteses das fontes do acervo e do consenso da área — orientam a decisão clínica,
 não a substituem.

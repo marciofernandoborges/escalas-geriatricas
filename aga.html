@@ -5,8 +5,9 @@
 <meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="AGA">
-<link rel="apple-touch-icon" href="icon-180.png">
-<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-aga-180.png">
+<link rel="icon" href="icon-aga-192.png">
+<link rel="manifest" href="aga.webmanifest">
 <style>
 :root{--bg:#ffffff;--panel:#f6f8fb;--panel2:#eaeff6;--line:#d3dbe6;--ink:#16202b;--dim:#5d6b7d;
  --acc:#0c457a;--acc-soft:#e3edf8;--ok:#1a7a4d;--medio:#9a6a05;--alto:#b45a17;--critico:#b62222;
@@ -953,9 +954,4 @@ function render(){
 document.querySelectorAll('.tab').forEach(t=> t.onclick=()=>{ state.view=t.dataset.v; document.body.classList.remove('nav'); render(); });
 $('#menu').onclick=()=> document.body.classList.toggle('nav');
 render();
-</script><script>
-if('serviceWorker' in navigator) window.addEventListener('load',function(){
-  navigator.serviceWorker.register('sw.js').catch(function(){});
-});
-</script>
-</body></html>
+</script></body></html>
