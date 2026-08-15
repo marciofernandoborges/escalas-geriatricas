@@ -17,7 +17,8 @@ html,body{height:100%;overflow-x:hidden}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif;display:flex;flex-direction:column}
 button{font:inherit;cursor:pointer;color:inherit}
 header{display:flex;align-items:center;gap:12px;padding:calc(11px + var(--sat)) 20px 11px;border-bottom:1px solid var(--line);background:#fff;flex:0 0 auto;box-shadow:0 1px 3px rgba(16,32,52,.05)}
-header h1{margin:0;font-size:16px;white-space:nowrap}
+header h1{margin:0;font-size:16px;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.tit-c{display:none}
 .pac{background:var(--acc-soft);border:1px solid #c2d6ea;border-radius:999px;padding:4px 13px;font-size:13px;color:var(--acc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:38vw}
 .pac b{color:var(--ink)}
 #menu{display:none;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:8px 12px}
@@ -128,11 +129,16 @@ table.dyn select{background:var(--panel2);border:1px solid var(--line);color:var
 .pv ul{padding-left:20px}.pv li{margin:4px 0;font-size:10.5pt}.pv .lin{margin:5px 0;font-size:10.5pt}
 .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;padding:10px 22px;border-radius:999px;font-weight:600;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:99}
 .toast.on{opacity:1}
+@media(max-width:360px){ header h1{font-size:14px} .tit-l{display:none} .tit-c{display:inline} }
 @media(max-width:900px){
  header{gap:8px;padding:calc(9px + var(--sat)) 12px 9px}
- header h1{display:none} .pac{max-width:34vw}
+ header{flex-wrap:wrap;row-gap:7px}
+ header h1{font-size:15.5px;flex:1 1 auto}
+ .pac{max-width:44vw;margin-left:auto}
+ .tabs{order:3;width:100%;margin-left:0;gap:4px}
+ .tab{flex:1;text-align:center;padding:8px 4px;font-size:12.5px}
  #menu{display:block} .tab{padding:7px 9px;font-size:12.5px}
- aside{position:fixed;inset:calc(50px + var(--sat)) 0 0 0;width:auto;flex:none;z-index:40;transform:translateX(-100%);transition:transform .22s}
+ aside{position:fixed;inset:var(--hh,92px) 0 0 0;width:auto;flex:none;z-index:40;transform:translateX(-100%);transition:transform .22s}
  body.nav aside{transform:translateX(0)}
  section.work{padding:16px 14px 40px}
  .grid{grid-template-columns:1fr} .f.w2{grid-column:span 1}
@@ -181,7 +187,7 @@ table.dyn select{background:var(--panel2);border:1px solid var(--line);color:var
 </style></head><body>
 <header>
  <button id="menu">&#9776;</button>
- <h1>Avaliação Geriátrica Ampla</h1>
+ <h1><span class="tit-l">Avaliação Geriátrica Ampla</span><span class="tit-c">AGA</span></h1>
  <span class="pac" id="pac">sem paciente</span>
  <div class="tabs">
   <button class="tab on" data-v="av">Avaliar</button>
@@ -953,5 +959,7 @@ function render(){
 }
 document.querySelectorAll('.tab').forEach(t=> t.onclick=()=>{ state.view=t.dataset.v; document.body.classList.remove('nav'); render(); });
 $('#menu').onclick=()=> document.body.classList.toggle('nav');
+const hh=()=>document.documentElement.style.setProperty('--hh', document.querySelector('header').offsetHeight+'px');
+hh(); addEventListener('resize', hh); addEventListener('orientationchange', ()=>setTimeout(hh,120));
 render();
 </script></body></html>

@@ -87,7 +87,7 @@ Substitua o `index.html` no repositório pela versão nova e **incremente a vers
 primeira linha do `sw.js`:
 
 ```js
-const CACHE = 'escalas-geriatricas-v7';   // era v6
+const CACHE = 'escalas-geriatricas-v8';   // era v7
 ```
 
 Sem trocar esse número, os aparelhos que já instalaram continuam abrindo a versão antiga do cache.
